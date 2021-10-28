@@ -1,3 +1,14 @@
-const userName: string = 'Yiro';
+// npm start lite-server
+// tsc -2
 
-console.log(userName);
+class Department {
+  name: string;
+
+  constructor(n: string) {
+    this.name = n;
+  }
+}
+
+const accounting = new Department('Accounting');
+
+console.log(accounting);
