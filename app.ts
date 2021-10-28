@@ -2,15 +2,17 @@
 // tsc -2
 
 class Department {
-  //name: string;
+  //private readonly id: string; readonly make sure value it cant change later
+  //private name: string;
   private employees: string[] = [];
 
-  constructor(private id: string, public name: string) {
+  constructor(private readonly id: string, public name: string) {
+    //this.id = id
     //this.name = n;
   }
 
   describe(this: Department) {
-    console.log('Department' + this.name)
+    console.log(`Department ${this.id} ${this.name}`)
   }
 
   addEmployee(employee: string) {
