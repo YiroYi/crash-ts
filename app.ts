@@ -2,11 +2,11 @@
 // tsc -2
 
 class Department {
-  name: string;
+  //name: string;
   private employees: string[] = [];
 
-  constructor(n: string) {
-    this.name = n;
+  constructor(private id: string, public name: string) {
+    //this.name = n;
   }
 
   describe(this: Department) {
@@ -23,7 +23,9 @@ class Department {
   }
 }
 
-const accounting = new Department('Accounting');
+const accounting = new Department('d1', 'Accounting');
+
+accounting.describe();
 
 accounting.addEmployee('Yiro');
 accounting.addEmployee('Yujin');
