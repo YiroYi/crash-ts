@@ -1,110 +1,44 @@
-// npm start lite-server
-// tsc -2
+//interface: describes how a class looks like that.
+// only defines the structure
+interface AddFn {
+  (a: number, b: number): number;
+}
 
-class Department {
-  //private readonly id: string; readonly make sure value it cant change later
-  //private name: string;
-  protected employees: string[] = [];
+let AddNew: AddFn;
 
-  constructor(private readonly id: string, public name: string) {
-    //this.id = id
-    //this.name = n;
+AddNew = (n1: number, n2: number) => {
+  return n1 + n2;
+}
+
+interface Named {
+  name: string;
+  outputName?: string;
+  //The ? means that this property is optional in other classes
+}
+
+interface Greetable extends Named {
+
+  greet(phrase: string): void;
+}
+
+class Person implements Greetable {
+  name: string;
+  age = 30;
+
+
+  constructor(n: string) {
+    this.name = n;
   }
 
-  describe(this: Department) {
-    console.log(`Department ${this.id} ${this.name}`)
-  }
-
-  addEmployee(employee: string) {
-    this.employees.push(employee);
-  }
-
-  printEmployeeInformation() {
-    console.log(this.employees.length);
-    console.log(this.employees);
+  greet(phrase: string) {
+    console.log(phrase + '' + this.name)
   }
 }
 
-class ITDepartment extends Department {
-  admins: string[];
-  constructor(id: string, admins: string[]) {
-    super(id, 'IT');
-    this.admins = admins;
-  }
-}
+let user1: Greetable;
 
-class MarketingDepartment extends Department {
-  admins: string[];
-  constructor(id: string, admins: string[]) {
-    super(id, 'Marketing');
-    this.admins = admins;
-  }
-}
+user1 = new Person('Max');
 
-class Accounting extends Department {
-  private lastReport: string;
+user1.greet('Hi there I am');
 
-  get mostRecentReport() {
-    if (this.lastReport) {
-      return this.lastReport;
-    }
-
-    throw new Error('Not Report found');
-  }
-
-  set mostRecentReport(value: string) {
-    if (!value) {
-      throw new Error ('no value');
-    }
-
-    this.addReport(value);
-  }
-
-  constructor(id: string, private reports: string[]) {
-    super(id, 'accounting');
-    this.lastReport = reports[0];
-  }
-
-  addEmployee(name: string) {
-    if(name === 'Max') {
-      return;
-    }
-
-    this.employees.push(name);
-  }
-
-  addReport(text: string ) {
-    this.reports.push(text);
-    this.lastReport = text;
-  }
-
-  printReports() {
-    console.log(this.reports)
-  }
-}
-
-const it = new ITDepartment('d1', ['Yiro']);
-
-it.describe();
-
-it.addEmployee('Yiro');
-it.addEmployee('Yujin');
-
-it.printEmployeeInformation();
-
-console.log(it);
-
-const accounting = new Accounting('d2', []);
-
-accounting.mostRecentReport = 'This Yiro Report'
-
-console.log(accounting.mostRecentReport);
-
-accounting.addReport('This new report');
-
-accounting.printReports();
-
-accounting.addEmployee('Yiro Yi');
-
-console.log(accounting);
-
+console.log(user1);
