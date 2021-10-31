@@ -55,6 +55,7 @@ class MarketingDepartment extends Department {
 
 class Accounting extends Department {
   private lastReport: string;
+  private static instance: Accounting;
 
   get mostRecentReport() {
     if (this.lastReport) {
@@ -72,9 +73,21 @@ class Accounting extends Department {
     this.addReport(value);
   }
 
-  constructor(id: string, private reports: string[]) {
+  //Singleton means just one instance of one class , for example
+  // we would like to ensure that we only have one Accounting
+  //Department no more
+  private constructor(id: string, private reports: string[]) {
     super(id, 'accounting');
     this.lastReport = reports[0];
+  }
+
+  static getInstance() {
+    if(this.instance) {
+      return this.instance;
+    }
+
+    this.instance = new Accounting('d2', []);
+    return this.instance;
   }
 
   addEmployee(name: string) {
@@ -110,8 +123,8 @@ it.printEmployeeInformation();
 
 console.log(it);
 
-const accounting = new Accounting('d2', []);
-
+const accounting = Accounting.getInstance();
+console.log(accounting);
 
 accounting.mostRecentReport = 'This Yiro Report'
 console.log(accounting.mostRecentReport);
