@@ -1,21 +1,29 @@
 //interface: describes how a class looks like that.
 // only defines the structure
 
-interface Person {
+interface Greetable {
   name: string;
-  age: number;
 
   greet(phrase: string): void;
 }
 
-let user1: Person;
+class Person implements Greetable {
+  name: string;
+  age = 30;
 
-user1 = {
-  name: 'Yiro',
-  age: 34,
-  greet(phrase: string) {
-    console.log(phrase + ' ' + this.name)
+  constructor(n: string) {
+    this.name = n;
   }
-};
+
+  greet(phrase: string) {
+    console.log(phrase + '' + this.name)
+  }
+}
+
+let user1: Greetable;
+
+user1 = new Person('Max');
 
 user1.greet('Hi there I am');
+
+console.log(user1);
