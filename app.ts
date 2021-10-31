@@ -33,6 +33,14 @@ class ITDepartment extends Department {
   }
 }
 
+class MarketingDepartment extends Department {
+  admins: string[];
+  constructor(id: string, admins: string[]) {
+    super(id, 'Marketing');
+    this.admins = admins;
+  }
+}
+
 class Accounting extends Department {
   private lastReport: string;
 
