@@ -1,20 +1,19 @@
 // npm start lite-server
 // tsc -2
 
-class Department {
+abstract class Department {
   static fiscalYear = 2021;
   //private readonly id: string; readonly make sure value it cant change later
   //private name: string;
   protected employees: string[] = [];
 
-  constructor(private readonly id: string, public name: string) {
+  constructor(protected readonly id: string, public name: string) {
     //this.id = id
     //this.name = n;
   }
 
-  describe(this: Department) {
-    console.log(`Department ${this.id} ${this.name}`)
-  }
+  abstract describe(this: Department): void;
+  // Enforce that other classes have this method
 
   addEmployee(employee: string) {
     this.employees.push(employee);
@@ -36,6 +35,10 @@ class ITDepartment extends Department {
     super(id, 'IT');
     this.admins = admins;
   }
+
+  describe() {
+    console.log('IT Department -ID: ' + this.id);
+  }
 }
 
 class MarketingDepartment extends Department {
@@ -43,6 +46,10 @@ class MarketingDepartment extends Department {
   constructor(id: string, admins: string[]) {
     super(id, 'Marketing');
     this.admins = admins;
+  }
+
+  describe() {
+    console.log('IT Department -ID: ' + this.id);
   }
 }
 
@@ -86,6 +93,10 @@ class Accounting extends Department {
   printReports() {
     console.log(this.reports)
   }
+
+  describe() {
+    console.log('Accounting department ID:' + this.id)
+  }
 }
 
 const it = new ITDepartment('d1', ['Yiro']);
@@ -101,15 +112,14 @@ console.log(it);
 
 const accounting = new Accounting('d2', []);
 
+
 accounting.mostRecentReport = 'This Yiro Report'
-
 console.log(accounting.mostRecentReport);
-
 accounting.addReport('This new report');
-
 accounting.printReports();
-
 accounting.addEmployee('Yiro Yi');
+accounting.describe();
+
 
 console.log(accounting);
 
