@@ -2,6 +2,7 @@
 // tsc -2
 
 class Department {
+  static fiscalYear = 2021;
   //private readonly id: string; readonly make sure value it cant change later
   //private name: string;
   protected employees: string[] = [];
@@ -22,6 +23,10 @@ class Department {
   printEmployeeInformation() {
     console.log(this.employees.length);
     console.log(this.employees);
+  }
+
+  static createEmployee(name: string) {
+    return { name: name}
   }
 }
 
@@ -108,3 +113,7 @@ accounting.addEmployee('Yiro Yi');
 
 console.log(accounting);
 
+const employee1 = Department.createEmployee('Yijin')
+
+console.log(employee1);
+console.log(Department.fiscalYear);
