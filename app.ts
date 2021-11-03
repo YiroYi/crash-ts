@@ -1,44 +1,76 @@
-//interface: describes how a class looks like that.
-// only defines the structure
-interface AddFn {
-  (a: number, b: number): number;
-}
-
-let AddNew: AddFn;
-
-AddNew = (n1: number, n2: number) => {
-  return n1 + n2;
-}
-
-interface Named {
+type Admin = {
   name: string;
-  outputName?: string;
-  //The ? means that this property is optional in other classes
-}
+  privileges: string[];
+};
 
-interface Greetable extends Named {
-
-  greet(phrase: string): void;
-}
-
-class Person implements Greetable {
+type Employee = {
   name: string;
-  age = 30;
+  startDate: Date;
+}
 
+type ElevatedEmployee = Admin & Employee;
 
-  constructor(n: string) {
-    this.name = n;
+const e1: ElevatedEmployee = {
+  name: 'Yiro',
+  privileges: ['create', 'delete'],
+  startDate: new Date()
+}
+
+type CombinableVar = string | number;
+type Numeric = number | boolean;
+
+type Universal = CombinableVar & Numeric;
+
+function add02(a: CombinableVar, b: CombinableVar) {
+  if (typeof a === 'string' || typeof b === 'string') {
+    return a.toString() + b.toString();
+  }
+  return a + b;
+}
+
+type UnknownEmployee = Employee | Admin;
+
+function printEmployeeInformation(emp: UnknownEmployee) {
+  console.log('Name: ' + emp.name);
+  if ('privileges' in emp) {
+    console.log('Privileges' + emp.privileges);
   }
 
-  greet(phrase: string) {
-    console.log(phrase + '' + this.name)
+  if ('startDate' in emp) {
+    console.log('Privileges' + emp.startDate);
   }
 }
 
-let user1: Greetable;
+printEmployeeInformation(e1);
 
-user1 = new Person('Max');
 
-user1.greet('Hi there I am');
+class Car {
+  drive() {
+    console.log('Driving');
+  }
+}
 
-console.log(user1);
+class Truck {
+  drive() {
+    console.log('Driving a truck');
+  }
+
+  loadCargo(amount: number) {
+    console.log('Loading cargo' +  amount)
+  }
+}
+
+type Vehicle = Car | Truck;
+
+const v1 = new Car();
+const v2 = new Truck();
+
+function useVehicle(vehicle: Vehicle) {
+  vehicle.drive();
+  if(vehicle instanceof Truck) {
+    vehicle.loadCargo(1000);
+  }
+}
+
+useVehicle(v1);
+useVehicle(v2);
