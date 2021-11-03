@@ -1,44 +1,23 @@
-//interface: describes how a class looks like that.
-// only defines the structure
-interface AddFn {
-  (a: number, b: number): number;
-}
-
-let AddNew: AddFn;
-
-AddNew = (n1: number, n2: number) => {
-  return n1 + n2;
-}
-
-interface Named {
+type Admin = {
   name: string;
-  outputName?: string;
-  //The ? means that this property is optional in other classes
-}
+  privileges: string[];
+};
 
-interface Greetable extends Named {
-
-  greet(phrase: string): void;
-}
-
-class Person implements Greetable {
+type Employee = {
   name: string;
-  age = 30;
-
-
-  constructor(n: string) {
-    this.name = n;
-  }
-
-  greet(phrase: string) {
-    console.log(phrase + '' + this.name)
-  }
+  startDate: Date;
 }
 
-let user1: Greetable;
+type ElevatedEmployee = Admin & Employee;
 
-user1 = new Person('Max');
+const e1: ElevatedEmployee = {
+  name: 'Yiro',
+  privileges: ['create', 'delete'],
+  startDate: new Date()
+}
 
-user1.greet('Hi there I am');
+type CombinableVar = string | number;
+type Numeric = number | boolean;
 
-console.log(user1);
+type Universal = CombinableVar & Numeric;
+
