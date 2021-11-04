@@ -74,3 +74,23 @@ function useVehicle(vehicle: Vehicle) {
 
 useVehicle(v1);
 useVehicle(v2);
+
+interface Bird {
+  type: 'bird';
+  flyingSpeed: number;
+}
+
+interface Horse {
+  type: 'horse';
+  runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+function moveAnimal(animal: Animal) {
+  if (animal.type === 'bird') {
+    return console.log('Moving with speed' + animal.flyingSpeed)
+  }
+
+  return console.log('Moving with speed' + animal.runningSpeed)
+}
