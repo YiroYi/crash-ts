@@ -94,3 +94,7 @@ function moveAnimal(animal: Animal) {
 
   return console.log('Moving with speed' + animal.runningSpeed)
 }
+
+const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
+
+userInputElement.value = 'Hi There';
