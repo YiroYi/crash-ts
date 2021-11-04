@@ -33,6 +33,17 @@ function add02(a: CombinableVar, b: CombinableVar) {
 const result02 = add02('Yiro', 'Yujin');
 result02.split(' ');
 
+const fetchedUserData = {
+  id: 'u1',
+  name: 'Max',
+  job: {title: 'CEO', description: 'Owner of kimchi coding'}
+}
+
+//console.log(fetchedUserData.job && fetchedUserData.job.title);
+console.log(fetchedUserData?.job?.title);
+// Esto es como para poner si existe fetchedUserData.job entonces fetchedUserData.job.title
+
+
 // type UnknownEmployee = Employee | Admin;
 
 // function printEmployeeInformation(emp: UnknownEmployee) {
