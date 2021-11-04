@@ -42,8 +42,11 @@ const fetchedUserData = {
 //console.log(fetchedUserData.job && fetchedUserData.job.title);
 console.log(fetchedUserData?.job?.title);
 // Esto es como para poner si existe fetchedUserData.job entonces fetchedUserData.job.title
+const userInput = '';
 
+const storedData = userInput ?? 'DEFAULT';
 
+// ?? if it is not udefined then do userInput otherwise 'DEFAULT'
 // type UnknownEmployee = Employee | Admin;
 
 // function printEmployeeInformation(emp: UnknownEmployee) {
