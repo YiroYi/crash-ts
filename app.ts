@@ -98,3 +98,11 @@ function moveAnimal(animal: Animal) {
 const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
 
 userInputElement.value = 'Hi There';
+
+interface ErrorContainer {
+  [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  email: 'Not a valid email'
+}
