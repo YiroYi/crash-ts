@@ -21,6 +21,8 @@ type Numeric = number | boolean;
 
 type Universal = CombinableVar & Numeric;
 
+function add02(a: number, b:number): number;
+function add02(a: string, b:string): string;
 function add02(a: CombinableVar, b: CombinableVar) {
   if (typeof a === 'string' || typeof b === 'string') {
     return a.toString() + b.toString();
@@ -28,81 +30,93 @@ function add02(a: CombinableVar, b: CombinableVar) {
   return a + b;
 }
 
-type UnknownEmployee = Employee | Admin;
+const result02 = add02('Yiro', 'Yujin');
+result02.split(' ');
 
-function printEmployeeInformation(emp: UnknownEmployee) {
-  console.log('Name: ' + emp.name);
-  if ('privileges' in emp) {
-    console.log('Privileges' + emp.privileges);
-  }
+// type UnknownEmployee = Employee | Admin;
 
-  if ('startDate' in emp) {
-    console.log('Privileges' + emp.startDate);
-  }
-}
+// function printEmployeeInformation(emp: UnknownEmployee) {
+//   console.log('Name: ' + emp.name);
+//   if ('privileges' in emp) {
+//     console.log('Privileges' + emp.privileges);
+//   }
 
-printEmployeeInformation(e1);
+//   if ('startDate' in emp) {
+//     console.log('Privileges' + emp.startDate);
+//   }
+// }
+
+// printEmployeeInformation(e1);
 
 
-class Car {
-  drive() {
-    console.log('Driving');
-  }
-}
+// class Car {
+//   drive() {
+//     console.log('Driving');
+//   }
+// }
 
-class Truck {
-  drive() {
-    console.log('Driving a truck');
-  }
+// class Truck {
+//   drive() {
+//     console.log('Driving a truck');
+//   }
 
-  loadCargo(amount: number) {
-    console.log('Loading cargo' +  amount)
-  }
-}
+//   loadCargo(amount: number) {
+//     console.log('Loading cargo' +  amount)
+//   }
+// }
 
-type Vehicle = Car | Truck;
+// type Vehicle = Car | Truck;
 
-const v1 = new Car();
-const v2 = new Truck();
+// const v1 = new Car();
+// const v2 = new Truck();
 
-function useVehicle(vehicle: Vehicle) {
-  vehicle.drive();
-  if(vehicle instanceof Truck) {
-    vehicle.loadCargo(1000);
-  }
-}
+// function useVehicle(vehicle: Vehicle) {
+//   vehicle.drive();
+//   if(vehicle instanceof Truck) {
+//     vehicle.loadCargo(1000);
+//   }
+// }
 
-useVehicle(v1);
-useVehicle(v2);
+// useVehicle(v1);
+// useVehicle(v2);
 
-interface Bird {
-  type: 'bird';
-  flyingSpeed: number;
-}
+// interface Bird {
+//   type: 'bird';
+//   flyingSpeed: number;
+// }
 
-interface Horse {
-  type: 'horse';
-  runningSpeed: number;
-}
+// interface Horse {
+//   type: 'horse';
+//   runningSpeed: number;
+// }
 
-type Animal = Bird | Horse;
+// type Animal = Bird | Horse;
 
-function moveAnimal(animal: Animal) {
-  if (animal.type === 'bird') {
-    return console.log('Moving with speed' + animal.flyingSpeed)
-  }
+// function moveAnimal(animal: Animal) {
+//   if (animal.type === 'bird') {
+//     return console.log('Moving with speed' + animal.flyingSpeed)
+//   }
 
-  return console.log('Moving with speed' + animal.runningSpeed)
-}
+//   return console.log('Moving with speed' + animal.runningSpeed)
+// }
 
-const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
+// const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
 
-userInputElement.value = 'Hi There';
+// userInputElement.value = 'Hi There';
 
-interface ErrorContainer {
-  [prop: string]: string;
-}
+// interface ErrorContainer {
+//   [prop: string]: string;
+// }
 
-const errorBag: ErrorContainer = {
-  email: 'Not a valid email'
-}
+// const errorBag: ErrorContainer = {
+//   email: 'Not a valid email'
+// }
+
+
+
+
+
+
+
+
+
