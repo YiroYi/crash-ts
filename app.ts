@@ -6,11 +6,30 @@
 //   }, 2000);
 // });
 
-function merge<T, U>(objA: T, objB: U) {
-  return Object.assign(objA, objB)
+// function merge<T, U>(objA: T, objB: U) {
+//   return Object.assign(objA, objB)
+// }
+
+// const mergedObj = merge({name: 'Yiro'}, {age: 30});
+
+// console.log(mergedObj);
+function Logger(constructor: Function) {
+ console.log('Logging...');
+ console.log(constructor);
 }
 
-const mergedObj = merge({name: 'Yiro'}, {age: 30});
+@Logger
+class Personx {
+  name = 'Yiro';
 
-console.log(mergedObj);
+  constructor() {
+    console.log('Creating person object...');
+  }
+}
+
+const personx = new Personx();
+
+console.log(personx);
+
+
 
